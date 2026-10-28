@@ -252,9 +252,9 @@ nav *{pointer-events:all}
 let current='home';
 function showPage(id){
   const prev=document.getElementById(current);
-  if(prev){prev.classList.remove('shown');setTimeout(()=>{prev.classList.remove('visible')},400)}
-  current=id;
   const next=document.getElementById(id);
+  if(prev&&prev!==next){prev.classList.remove('shown');setTimeout(()=>{if(!prev.classList.contains('shown'))prev.classList.remove('visible')},400)}
+  current=id;
   next.classList.add('visible');
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
     next.classList.add('shown');
